@@ -59,12 +59,7 @@ public class CarManager {
                     carList.listCars();
                     break;
                 case 7:
-                    brandCarID = MyUtils.getString("Input brand (you can input a part of it): ", "The brand must not be null. Try again !");
-                    if (carList.searchID(brandCarID) != -1) {
-                        System.out.println(carList.get(carList.searchID(brandCarID)));
-                    } else {
-                        System.out.println("No result");
-                    }
+                    carList.printBasedBrandName();
                     break;
                 case 8:
                     carList.addCar();

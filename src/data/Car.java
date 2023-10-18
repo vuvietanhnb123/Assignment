@@ -66,7 +66,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public String toString() {
-        return "<" + carID + ", " + brand.getBrandID() + ", " + color + "," + frameID + ", " + engineID + ">";
+        return "<" + carID + ", " + brand.getBrandID() + ", " + color + ", " + frameID + ", " + engineID + ">";
     }
     
      public String screenString () {
