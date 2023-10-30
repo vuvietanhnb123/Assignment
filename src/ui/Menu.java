@@ -37,7 +37,7 @@ public class Menu {
             return;
         }
         System.out.println("\n------------------------------------");
-        System.out.println("Welcome to " + menuTitle);
+        System.out.println(menuTitle);
         for (String x : optionList) {
             System.out.println(x);
         }
@@ -68,7 +68,7 @@ public class Menu {
         int maxOption = options.size();
         int response;
         for (int i = 0; i < maxOption; i++) {
-            System.out.println("" + (i + 1) + ". " + options.get(i));
+            System.out.println((i + 1) + ". " + options.get(i));
         }
         String inputMsg = "Please choose an option [1.." + maxOption + "]: ";
         String errorMsg = "You must choose an option 1.." + maxOption;

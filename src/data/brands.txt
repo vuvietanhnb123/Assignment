@@ -11,3 +11,11 @@ B3-S19, BMW 320i Sportline (2019), Bose: 1.899
 B5-X19, BMW X5 xDrive40i XLine (2019), Bose: 4.199
 B5-X20, BMW X5 xDrive40i XLine (2020), Bose: 4.239
 B7-2019, BMW 092, VANH: 3.222
+B2-QP39, BMW 3 Series, AcousticPulse: 9.014
+B4-HK13, BMW M5, SonicWave: 5.573
+B3-MA63, BMW X6, SoundWavesX: 1.593
+B6-IM44, BMW X4, EchoDynamics: 3.185
+B7-AT18, BMW M2, SonicHarbor: 5.437
+B8-EB43, BMW X7, AcousticMomentum: 5.813
+B0-HH96, BMW 8 Series, SoniBlend: 8.226
+B7-XY04, BMW 3 Series, PulseFusion: 3.04
