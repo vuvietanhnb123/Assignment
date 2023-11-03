@@ -73,6 +73,7 @@ public class CarList extends ArrayList<Car> {
             engineID = "E" + frameID.substring(1);
             this.add(new Car(carID, brand, color, frameID, engineID));
         }
+        System.out.println(numberOfGenerations + " random car(s) has been generated");
     }
 
     public int searchID(String carID) {
@@ -158,14 +159,45 @@ public class CarList extends ArrayList<Car> {
     }
 
     public boolean removeCar() {
+        //remove base on ID
+        this.listFullCars();
         int pos;
         String removedID;
         removedID = MyUtils.getID("Input car ID to remove: ", "The carID must not be null. Try again !");
         pos = searchID(removedID);
         if (pos >= 0) {
-            this.remove(pos);
-            System.out.println("Car has been removed successfully");
-            return true;
+            System.out.println("Are you sure to remove car with id " + this.get(pos).getCarID());
+            System.out.print("Please choose Y/N: ");
+            String choice = sc.nextLine();
+            if (choice.equalsIgnoreCase("Y")) {
+                this.remove(pos);
+                System.out.println("Car has been removed successfully");
+                return true;
+            } else {
+                System.out.println("The car with id " + this.get(pos).getCarID() + " has been retained");
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public boolean removeCarBaseOnIndex() {
+        this.listFullCars();
+        int index;
+        index = MyUtils.getAnInteger("In put index of car to remove: ", "The index must be a number. Try again !");
+        if (index - 1 >= 0 && index - 1 < this.size()) {
+            System.out.println("Are you sure to remove car with id " + this.get(index - 1).getCarID());
+            System.out.print("Please choose Y/N: ");
+            String choice = sc.nextLine();
+            if (choice.equalsIgnoreCase("Y")) {
+                this.remove(index - 1);
+                System.out.println("Car has been removed successfully");
+                return true;
+            } else {
+                System.out.println("The car with id " + this.get(index - 1).getCarID() + " has been retained");
+                return true;
+            }
         }
         return false;
     }
@@ -290,5 +322,26 @@ public class CarList extends ArrayList<Car> {
         for (Car car : this) {
             System.out.println(car.screenString());
         }
+    }
+
+    public void listFullCars() {
+        String format = "| %-5s | %-6s | %-8s | %-6s | %-7s | %-8s |%n";
+        System.out.println("Car list");
+        System.out.format("+-------+--------+----------+--------+---------+----------+%n");
+        System.out.format("| Index | Car ID | Brand ID | Color  | FrameID | EngineID |%n");
+        System.out.format("+-------+--------+----------+--------+---------+----------+%n");
+
+        for (Car car : this) {
+            String index = String.format("%d", this.indexOf(car) + 1);
+            carID = car.getCarID();
+            String brandID = car.getBrand().getBrandID();
+            color = car.getColor();
+            frameID = car.getFrameID();
+            engineID = car.getEngineID();
+            System.out.format(format, index, carID, brandID, color, frameID, engineID);
+        }
+
+        System.out.format("+-------+--------+----------+--------+--------+-----------+%n");
+        System.out.println("There are " + this.size() + " car(s) in the list.");
     }
 }

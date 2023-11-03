@@ -25,13 +25,16 @@ public class CarManager {
         menu.addNewOption("4 - Search a brand based on its ID");
         menu.addNewOption("5 - Update a brand");
         menu.addNewOption("6 - Save brands to the file, named brands.txt");
-        menu.addNewOption("7 - List all cars in ascending order of brand names");
-        menu.addNewOption("8 - List cars based on a part of an input brand name");
-        menu.addNewOption("9 - Generate random cars");
-        menu.addNewOption("10 - Add a car");
-        menu.addNewOption("11 - Remove a car based on its ID");
-        menu.addNewOption("12 - Update a car based on its ID");
-        menu.addNewOption("13 - Save cars to file, named cars.txt");
+        menu.addNewOption("7 - List all cars");
+        menu.addNewOption("8 - List all cars in ascending order of brand names");
+        menu.addNewOption("9 - List cars based on a part of an input brand name");
+        menu.addNewOption("10 - Generate random cars");
+        menu.addNewOption("11 - Add a car");
+        menu.addNewOption("12 - Remove a car based on its ID");
+        menu.addNewOption("13 - Remove a car based on its index");
+        menu.addNewOption("14 - Update a car based on its ID");
+        menu.addNewOption("15 - Save cars to file, named cars.txt");
+        menu.addNewOption("16 - Exit");
 
         do {
             menu.printMenu();
@@ -60,34 +63,43 @@ public class CarManager {
                 case 6:
                     brandList.saveToFile(fileBrandsName);
                     break;
-                case 7:
-                    carList.listCars();
+                case 7: 
+                    carList.listFullCars();
                     break;
                 case 8:
-                    carList.printBasedBrandName();
+                    carList.listCars();
                     break;
                 case 9:
-                    carList.genRandomCar();
+                    carList.printBasedBrandName();
                     break;
                 case 10:
-                    carList.addCar();
+                    carList.genRandomCar();
                     break;
                 case 11:
+                    carList.addCar();
+                    break;
+                case 12:
                     boolean check = carList.removeCar();
                     if (!check) {
                         System.out.println("Car has been not found");
                     }
                     break;
-                case 12:
+                case 13:
+                    check = carList.removeCarBaseOnIndex();
+                    if (!check) {
+                        System.out.println("Car has been not found");
+                    }
+                    break;
+                case 14:
                     check = carList.updateCar();
                     if (!check) {
                         System.out.println("Car has been not found");
                     }
                     break;
-                case 13:
+                case 15:
                     carList.saveToFile(fileCarsName);
                     break;                    
             }
-        } while ((choice > 0) && (choice <= 13));
+        } while ((choice > 0) && (choice <= 15));
     }
 }
