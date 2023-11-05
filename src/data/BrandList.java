@@ -18,7 +18,7 @@ public class BrandList extends ArrayList<Brand> {
 
     public void genRandomBrand() {
         System.out.print("Enter number of brands you want to generate: ");
-        int numberOfGenerations = sc.nextInt();
+        int numberOfGenerations = Integer.parseInt(sc.nextLine());
         for (int i = 0; i < numberOfGenerations; i++) {
             brandID = MyUtils.genRandomBrandID(brandIDList);
             brandName = MyUtils.genRandomBrandName();
@@ -121,6 +121,7 @@ public class BrandList extends ArrayList<Brand> {
                 System.out.println(x);
                 mnu.printMenu();
                 choice = mnu.int_getChoice();
+
                 switch (choice) {
                     case 1:
                         brandName = MyUtils.getString("Input brand name: ", "The brand name must not be null. Try again !");

@@ -64,7 +64,7 @@ public class CarList extends ArrayList<Car> {
 
     public void genRandomCar() {
         System.out.print("Enter number of cars you want to generate: ");
-        int numberOfGenerations = sc.nextInt();
+        int numberOfGenerations = Integer.parseInt(sc.nextLine());
         for (int i = 0; i < numberOfGenerations; i++) {
             carID = MyUtils.genRandomCarID(carIDList);
             brand = brandList.get(MyUtils.getRandomIntInRange(0, brandList.size() - 1));
@@ -177,7 +177,6 @@ public class CarList extends ArrayList<Car> {
                 System.out.println("The car with id " + this.get(pos).getCarID() + " has been retained");
                 return true;
             }
-
         }
         return false;
     }
@@ -185,7 +184,7 @@ public class CarList extends ArrayList<Car> {
     public boolean removeCarBaseOnIndex() {
         this.listFullCars();
         int index;
-        index = MyUtils.getAnInteger("In put index of car to remove: ", "The index must be a number. Try again !");
+        index = MyUtils.getAnInteger("Input index of car to remove: ", "The index must be a number. Try again !");
         if (index - 1 >= 0 && index - 1 < this.size()) {
             System.out.println("Are you sure to remove car with id " + this.get(index - 1).getCarID());
             System.out.print("Please choose Y/N: ");
