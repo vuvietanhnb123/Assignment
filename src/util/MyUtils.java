@@ -1,6 +1,7 @@
 package util;
 
-//class chứa các hàm đồ chơi, dùng cho việc nhập xuất dữ liệu
+//class chứa các hàm dùng cho việc nhập xuất dữ liệu và sinh random các thuộc tính
+//người dev: Vũ Việt Anh
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -10,11 +11,11 @@ public class MyUtils {
     private static Scanner sc = new Scanner(System.in);
 
     //hàm nhập vào số nguyên đích thực
-    //- mọi sự nhập cà chớn bị chửi, ví dụ nhập chuỗi thay vì nhập số
-    //- chống trôi lệnh, tức là ko để lại rác Enter hay kí tự nào đó
+    //mọi sự nhập không đúng đều được cảnh báo, ví dụ nhập chuỗi thay vì nhập số
+    //chống trôi lệnh, tức là ko để lại rác Enter hay kí tự nào đó
     //trong buffer cho thằng sau hốt 
-    //- có thể kiểm tra số nguyên trong 1 range/khoảng cho trước
-    //- có câu thông báo động, tùy ngữ cảnh 
+    //có thể kiểm tra số nguyên trong 1 range/khoảng cho trước
+    //có câu thông báo động, tùy ngữ cảnh 
     public static int getAnInteger(String inputMsg, String errorMsg) {
         int n;
         while (true) {
@@ -146,6 +147,7 @@ public class MyUtils {
         }
     }
     
+    //hàm làm tròn
     public static double getRound(double k, String pattern) {
         DecimalFormat df = new DecimalFormat(pattern);
         String s = df.format(k);
@@ -153,11 +155,13 @@ public class MyUtils {
         return result;
     }
     
+    //hàm sinh ngẫu nhiên 1 số nguyên
     public static int getRandomInt() {
         Random rand = new Random();
         return rand.nextInt();
     }
 
+    //hàm sinh ngẫu nhiên 1 số thực trong range
     public static double getRandomDoubleInRange(double min, double max) {
         if (min >= max) {
             throw new IllegalArgumentException("min must be less than max");
@@ -167,6 +171,7 @@ public class MyUtils {
         return min + (max - min) * rand.nextDouble();
     }
     
+    //hàm sinh ngẫu nhiên 1 số nguyên trong range
     public static int getRandomIntInRange(int min, int max) {
         if (min >= max) {
             throw new IllegalArgumentException("min must be less than max");
@@ -177,6 +182,9 @@ public class MyUtils {
         return rand.nextInt(max - min + 1) + min;
     }
     
+    //hàm sinh ngẫu nhiên 1 brandID
+    //dùng StringBuilder
+    //tạo 1 mảng chứa brandID để chống việc sinh trùng
     public static String genRandomBrandID(ArrayList<String> usedIDs) {
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         StringBuilder brandID = new StringBuilder();
@@ -201,22 +209,27 @@ public class MyUtils {
         return brandID.toString();
     }
     
+    //hàm sinh ngẫu nhiên brand name
     public static String genRandomBrandName() {
         String[] bn = {"BMW X5", "BMW M3", "BMW 7 Series", "BMW i8", "BMW Z4", "BMW 3 Series", "BMW X3", "BMW 5 Series", "BMW X7", "BMW X1", "BMW X6", "BMW M4", "BMW 8 Series", "BMW i3", "BMW 1 Series", "BMW X2", "BMW M5", "BMW 6 Series", "BMW M2", "BMW X4"};
         return bn[getRandomIntInRange(0, bn.length - 1)];      
     }
     
+    //hàm sinh ngẫu nhiên sound brand
     public static String genRandomSoundBrand() {
         String[] sb = {"SoundXperience", "SonicWave", "AudioZen", "HarmonicBeats", "SoundSculpt", "AcousticPulse", "SonicHarbor", "MeloGroove", "HarmonyWave", "EchoVibes", "SoniBlend", "AcousticPulse", "ResoTune", "SonicSphere", "VibeWave", "HarmonixRhythm", "PulseFusion", "EchoDynamics", "SoundWavesX", "AcousticMomentum"};
         return sb[getRandomIntInRange(0, sb.length - 1)];
     }
     
+    //hàm sinh ngẫu nhiên color
     public static String genRandomColor() {
         String[] colors = {"red", "green", "blue", "yellow", "black", "white", "brown", "cyan",
             "magenta", "pink", "gray", "orange", "purple", "violet", "tomato"};
         return colors[getRandomIntInRange(0, colors.length - 1)];
     }
     
+    //hàm sinh ngẫu nhiên frameID
+    //tương tự sinh brandID
     public static String genRandomFrameID(ArrayList<String> usedIDs) {   
         StringBuilder frameID = new StringBuilder();
 
@@ -238,6 +251,8 @@ public class MyUtils {
         return frameID.toString();
     }
     
+    //hàm sinh ngẫu nhiên carID
+    //tương tự brandID
     public static String genRandomCarID(ArrayList<String> usedIDs) {
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         StringBuilder carID = new StringBuilder();

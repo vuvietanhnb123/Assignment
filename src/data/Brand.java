@@ -1,10 +1,9 @@
 
-
 package data;
 
 import java.util.*;
 import java.lang.*;
-
+// Class Brand gồm đặc tính, constructor, ... Người dev: Vũ Việt Anh
 public class Brand {
     private String brandID, brandName, soundBrand;
     private double price;

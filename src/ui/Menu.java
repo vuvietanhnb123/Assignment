@@ -22,15 +22,13 @@ public class Menu {
 
     //bổ sung một lựa chọn vào danh sách, bắt đầu xây dựng thực đơn/
     //lựa chọn của chương trình
+    //người dev: Vũ Việt Anh
     public void addNewOption(String newOption) {
-        //TODO: cần kiểm tra coi option đưa vào có trùng với option
-        //sẵn có hay ko?
-        //nếu ko trùng, add vào danh sách lựa chọn
         optionList.add(newOption);
     }
 
-    //in ra danh sách các lựa chọn để người dùng chọn tính năng cần
-    //dùng
+    //in ra danh sách các lựa chọn để người dùng chọn tính năng cần dùng
+    //người dev: Vũ Việt Anh
     public void printMenu() {
         if (optionList.isEmpty()) {
             System.out.println("There is no item in the menu");
@@ -45,6 +43,7 @@ public class Menu {
 
     //có menu mới có lựa chọn. Hàm trả về con số người dùng chọn
     //ứng với chức năng mà người dùng muốn app thực thi
+    //người dev: Vũ Việt Anh
     public int int_getChoice() {
         int maxOption = optionList.size();
         //lựa chọn lớn nhất là số thứ tự ứng với số mục chọn
@@ -54,6 +53,7 @@ public class Menu {
     }
     
     //lấy lựa chọn của người dùng nhưng là object trong brandList
+    //người dev: Vũ Việt Anh
     public Brand ref_getChoice(ArrayList<Brand> options) {
         int maxOption = options.size();
         int response;
@@ -64,6 +64,7 @@ public class Menu {
         return options.get(response - 1);
     }
 
+    //người dev: Vũ Việt Anh
     private int int_getChoice(ArrayList<Brand> options) {
         int maxOption = options.size();
         int response;

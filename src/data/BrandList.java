@@ -16,6 +16,9 @@ public class BrandList extends ArrayList<Brand> {
     public BrandList() {
     }
 
+    // hàm dùng để tạo 1 brand ngẫu nhiên 
+    //cách xử lí bằng cách sinh ngẫu nhiên từng đặc tính của 1 brand thông qua MyUltil
+    //người dev: Vũ Việt Anh
     public void genRandomBrand() {
         System.out.print("Enter number of brands you want to generate: ");
         int numberOfGenerations = Integer.parseInt(sc.nextLine());
@@ -29,6 +32,8 @@ public class BrandList extends ArrayList<Brand> {
         System.out.println(numberOfGenerations + " random brand(s) has been generated");
     }
 
+    //hàm để load data từ file brands.txt. 
+    //Người dev: Vũ Việt Anh
     public boolean loadFromFile(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String[] arr;
@@ -51,6 +56,8 @@ public class BrandList extends ArrayList<Brand> {
         return false;
     }
 
+    //hàm để lưu data từ chương trình vào file brands.txt. 
+    //Người dev: Vũ Việt Anh
     public boolean saveToFile(String filename) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
             for (Brand brand : this) {
@@ -65,6 +72,9 @@ public class BrandList extends ArrayList<Brand> {
         return false;
     }
 
+    //hàm để search 1 brand thông qua ID.
+    //cách xử lý: duyệt qua list các brand rồi tìm brand trùng với id được nhập
+    //người dev: Nguyễn Thanh Tùng
     public int searchID(String bID) {
         if (this.isEmpty()) {
             return -1;
@@ -78,11 +88,15 @@ public class BrandList extends ArrayList<Brand> {
     }
 
     //chuyển list thành 1 menu cho người dùng chọn 1 brand từ đây
+    //người dev: Nguyễn Tuấn Anh
     public Brand getUserChoice() {
         Menu mnu = new Menu();
         return (Brand) mnu.ref_getChoice(this);
     }
 
+    //hàm dùng để add 1 brand mới
+    //cách xử lý: brandID mới không được trùng, và mỗi đặc tính được nhập thỏa mãn yêu cầu
+    //người dev: Nguyễn Tuấn Anh
     public void addBrand() {
         int pos;
         do {
@@ -101,6 +115,9 @@ public class BrandList extends ArrayList<Brand> {
         System.out.println("Brand has been added successfully");
     }
 
+    //hàm dùng để update một brand thông qua id
+    //cách xử lý: dùng hàm search id để tìm brand cần update. Rồi tạo 1 menu update cho user
+    //người dev: Nguyễn Thanh Tùng
     public void updateBrand() {
         Menu mnu = new Menu("Please choose the characteristics of brand that you want to update");
         mnu.addNewOption("1. Update brand name");
@@ -182,6 +199,10 @@ public class BrandList extends ArrayList<Brand> {
 //        }
 //        System.out.println("There are " + this.size() + " brand(s) in the list.");
 //    }
+    
+    //hàm để hiển thị toàn bộ brand
+    //cách xử lí: dùng String format để tạo format như ý muốn
+    //người dev: Lê Trần Quang Anh
     public void listBrands() {
         String format = "| %-5s | %-8s | %-29s | %-16s | %-5s |%n";
         System.out.println("Brand list");

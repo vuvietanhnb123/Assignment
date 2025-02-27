@@ -7,9 +7,12 @@ import java.lang.*;
 import ui.Menu;
 import util.MyUtils;
 
+//lớp main dùng để triển khai chương trình qua các lựa chọn của người dùng
+//người dev: Vũ Việt Anh
 public class CarManager {
 
     public static void main(String[] args) {
+        boolean statusFlag = false;
         int choice;
         String brandID, brandCarID;
         Menu menu = new Menu("CAR MANAGER APPLICATION");
@@ -45,9 +48,11 @@ public class CarManager {
                     break;
                 case 2:
                     brandList.genRandomBrand();
+                    statusFlag = true;
                     break;
                 case 3:
                     brandList.addBrand();
+                    statusFlag = true;
                     break;
                 case 4:
                     brandID = MyUtils.getID("Input brand ID: ", "The brandID must not be null. Try again !");
@@ -59,9 +64,11 @@ public class CarManager {
                     break;
                 case 5:
                     brandList.updateBrand();
+                    statusFlag = true;
                     break;
                 case 6:
                     brandList.saveToFile(fileBrandsName);
+                    statusFlag = false;
                     break;
                 case 7: 
                     carList.listFullCars();
@@ -74,31 +81,55 @@ public class CarManager {
                     break;
                 case 10:
                     carList.genRandomCar();
+                    statusFlag = true;
                     break;
                 case 11:
                     carList.addCar();
+                    statusFlag = true;
                     break;
                 case 12:
                     boolean check = carList.removeCar();
                     if (!check) {
                         System.out.println("Car has been not found");
                     }
+                    else statusFlag = true;
                     break;
                 case 13:
                     check = carList.removeCarBaseOnIndex();
                     if (!check) {
                         System.out.println("Car has been not found");
                     }
+                    else statusFlag = true;
                     break;
                 case 14:
                     check = carList.updateCar();
                     if (!check) {
                         System.out.println("Car has been not found");
                     }
+                    else statusFlag = true;
                     break;
                 case 15:
                     carList.saveToFile(fileCarsName);
-                    break;                    
+                    statusFlag = false;
+                    break;     
+                case 16:
+                    if (statusFlag == true) {
+                        System.out.println("Save your changes to file brands.txt and cars.txt");
+                        Menu mnu1 = new Menu("Choose your option");
+                        mnu1.addNewOption("1. Save");
+                        mnu1.addNewOption("2. Don't save");
+                        mnu1.printMenu();
+                        int choice1 = mnu1.int_getChoice();
+                        switch (choice1) {
+                            case 1:
+                                brandList.saveToFile(fileBrandsName);
+                                carList.saveToFile(fileCarsName);
+                                break;
+                            case 2:                          
+                                break;
+                        }
+                    }    
+                    break;
             }
         } while ((choice > 0) && (choice <= 15));
     }

@@ -2,7 +2,7 @@ package data;
 
 import java.util.*;
 import java.lang.*;
-
+//// Class Car gồm đặc tính, constructor, ... Người dev: Vũ Việt Anh
 public class Car implements Comparable<Car> {
 
     private String carID, color, frameID, engineID;
@@ -70,6 +70,6 @@ public class Car implements Comparable<Car> {
     }
     
      public String screenString () {
-        return brand + "\n" + carID + ", " + color + ", " + frameID + ", " + engineID;
+        return brand + "\n" + "\t"+ carID + ", " + color + ", " + frameID + ", " + engineID;
     }
 }

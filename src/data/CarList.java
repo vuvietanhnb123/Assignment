@@ -20,6 +20,8 @@ public class CarList extends ArrayList<Car> {
         brandList = bList;
     }
 
+    ////hàm để load data từ file cars.txt. 
+    //Người dev: Vũ Việt Anh
     public boolean loadFromFile(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String[] arr;
@@ -47,6 +49,8 @@ public class CarList extends ArrayList<Car> {
         return false;
     }
 
+    //hàm để lưu data từ chương trình vào file cars.txt. 
+    //Người dev: Vũ Việt Anh
     public boolean saveToFile(String filename) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
             for (Car car : this) {
@@ -61,7 +65,10 @@ public class CarList extends ArrayList<Car> {
         }
         return false;
     }
-
+    
+    // hàm dùng để tạo 1 car ngẫu nhiên 
+    //cách xử lí bằng cách sinh ngẫu nhiên từng đặc tính của 1 car thông qua MyUltil
+    //người dev: Vũ Việt Anh
     public void genRandomCar() {
         System.out.print("Enter number of cars you want to generate: ");
         int numberOfGenerations = Integer.parseInt(sc.nextLine());
@@ -76,6 +83,9 @@ public class CarList extends ArrayList<Car> {
         System.out.println(numberOfGenerations + " random car(s) has been generated");
     }
 
+    //hàm để search 1 car thông qua ID.
+    //cách xử lý: duyệt qua list các car rồi tìm brand trùng với id được nhập
+    //người dev: Nguyễn Thanh Tùng
     public int searchID(String carID) {
         if (this.isEmpty()) {
             return -1;
@@ -88,6 +98,10 @@ public class CarList extends ArrayList<Car> {
         return -1;
     }
 
+    //hàm để search 1 Frame thông qua ID.
+    //cách xử lý: duyệt qua list các car rồi tìm car có frameID trùng với id được nhập
+    //lưu ý frameID phải đúng format và không được trùng
+    //người dev: Nguyễn Thanh Tùng
     public int searchFrame(String fID) {
         if (this.isEmpty()) {
             return -1;
@@ -100,6 +114,10 @@ public class CarList extends ArrayList<Car> {
         return -1;
     }
 
+    //hàm để search 1 engine thông qua ID.
+    //cách xử lý: duyệt qua list các car rồi tìm car có eID trùng với id được nhập
+    //lưu ý eID phải đúng format và không được trùng
+    //người dev: Nguyễn Thanh Tùng
     public int searchEngine(String eID) {
         if (this.isEmpty()) {
             return -1;
@@ -112,6 +130,9 @@ public class CarList extends ArrayList<Car> {
         return -1;
     }
 
+    //hàm dùng để add 1 car mới
+    //cách xử lý: carID mới không được trùng, và mỗi đặc tính được nhập thỏa mãn yêu cầu
+    //người dev: Nguyễn Tuấn Anh
     public void addCar() {
         int pos;
         do {
@@ -143,6 +164,10 @@ public class CarList extends ArrayList<Car> {
         System.out.println("Car has been added successfully");
     }
 
+    //hàm để in car dựa vào một phần của brand name
+    //cách xử lý: duyệt qua list các car rồi xem car nào có chứa 1 phần brand name đã nhập
+    //sử dụng contain
+    //người dev: Lê Trần Quang Anh
     public void printBasedBrandName() {
         String aPartOfBrandName;
         int count = 0;
@@ -158,6 +183,9 @@ public class CarList extends ArrayList<Car> {
         }
     }
 
+    //hàm để xóa 1 car dựa vào id
+    //cách xử lý: duyệt qua list các car rồi xóa car trùng với id đã nhập
+    //người dev: Nguyễn Tuấn Anh
     public boolean removeCar() {
         //remove base on ID
         this.listFullCars();
@@ -181,6 +209,9 @@ public class CarList extends ArrayList<Car> {
         return false;
     }
 
+    //hàm để xóa 1 car dựa vào index
+    //cách xử lý: duyệt qua list các car rồi xóa car trùng với index đã nhập
+    //người dev: Vũ Việt Anh
     public boolean removeCarBaseOnIndex() {
         this.listFullCars();
         int index;
@@ -201,6 +232,9 @@ public class CarList extends ArrayList<Car> {
         return false;
     }
 
+    //hàm dùng để update một car thông qua id
+    //cách xử lý: dùng hàm search id để tìm car cần update. Rồi tạo 1 menu update cho user
+    //người dev: Nguyễn Thanh Tùng
     public boolean updateCar() {
         Menu mnu = new Menu("Please choose the characteristics of car that you want to update");
         mnu.addNewOption("1. Update brand");
@@ -316,6 +350,9 @@ public class CarList extends ArrayList<Car> {
         }
     }
 
+    //hàm dùng để in danh sách các car đã sắp xếp bằng brand name
+    //cách xử lý: dùng Collections và comparable đã thêm ở lớp car
+    //người dev: Lê Trần Quang Anh
     public void listCars() {
         Collections.sort(this);
         for (Car car : this) {
@@ -323,6 +360,9 @@ public class CarList extends ArrayList<Car> {
         }
     }
 
+    //hàm để hiển thị toàn bộ car
+    //cách xử lí: dùng String format để tạo format như ý muốn
+    //người dev: Lê Trần Quang Anh
     public void listFullCars() {
         String format = "| %-5s | %-6s | %-8s | %-6s | %-7s | %-8s |%n";
         System.out.println("Car list");
